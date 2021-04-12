@@ -1,188 +1,247 @@
-<!DOCTYPE html>
-<html lang="pl" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Australia - Szukaj w Google</title>
-    <link rel="icon"  href="data:image/png;base64,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">
-       <link rel="stylesheet" href="style.css">
+<!DOCTYPE HTML>
+<html lang="pl">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
+<head>
+    <meta charset="utf-8" />
+    <meta content="origin" name="referrer">
+    <meta content="/images/branding/googleg/1x/googleg_standard_color_128dp.png" itemprop="image">
+    <link href="/manifest?pwa=webhp" crossorigin="use-credentials" rel="manifest">
+    <title>Google</title> 
+    <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="result_style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 </head>
-  <body>
-    
-     <title>Australia - Szukaj w Google</title>
 
-    <div id="header">
-        <div id="topbar">
-            <img id="szukanie" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" />
-            <div id="szukaj" type="text" >
-                <input id="searchbartext" type="text" value="Australia" />
-                  <button id="searchbarmic">
-                 <div id="granica">
-                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtAJA0oIsYgdH30wmsfIJw7wbuG-dFHwKZMg&usqp=CAU" height=14px; width=14px;>
-                      </div>
-                     </button>
-                
-                <button id="searchbarmic">
-                   
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none"/><path d="M22 5H2.01L2 19h20V5zM11 8h2v2h-2V8zm0 3h2v2h-2v-2zM8 8h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z"/></svg>
-                </button>
-                <button id="przyciskszukaj">
-                    <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<body>
+<div id="app" :class="[googleSearch.length > 0 ? 'results' : 'home']">
+<div class="container">
+    <div class="menu">
+        <div class="button">
+            <div class="nav">
+            <a class="gb_g" data-pid="23" href="https://mail.google.com/mail/&amp;ogbl" target="_top">Gmail</a>
+            <a class="gb_g" data-pid="2" href="https://www.google.pl/imghp?hl=pl&amp;ogbl" target="_top">Grafika</a>
+                </div>
+                <a class="gb_D" aria-label="Aplikacje Google" href="https://www.google.pl/intl/pl/about/products" aria-expanded="false"
+                    role="button" tabindex="0"><svg class="gb_Xe" focusable="false" viewBox="0 0 24 24">
                         <path
-                            d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                            d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z">
                         </path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <div id="opcje">
-            <ul id="gorazakladki">
-                <li id="zakladki">Wszystko</li>
-                <li>Wiadomości</li>
-                <li>Wideo</li>
-                <li>Zdjęcia</li>
-                <li>Mapy</li>
-                <li>Więcej</li>
-                <li>Opcje</li>
-                <li>Narzędzia</li>
-            </ul>
-        </div>
-    </div>
-    <div id="strony">
-        <p id="numer">Około 3 610 000 000 wyników (0,95 s)  </p>
-        <div class="strona">
-            <h2>
-                Australia – Wikipedia, wolna encyklopedia </h2>
-            <a>https://pl.wikipedia.org/wiki/Australia </a> <button>▼</button>
-            <p>Australia (formalnie Związek Australijski, ang. Commonwealth of Australia) – państwo demokratyczne, położone na półkuli południowej, obejmujące kontynent ...</p>
-        </div>
-
-        <div class="strona">
-            <h2>
-                Australia - Wikipedia</h2>
-            <a>https://en.wikipedia.org/wiki/Australia</a> <button>▼</button>
-            <p>Australia, officially the Commonwealth of Australia, is a sovereign country comprising the mainland of the Australian continent, the island of Tasmania, and ...</p>
-          
-        </div>
-
-        <div class="strona">
-            <h2>
-                Tourism Australia: Visit Australia - Travel & Tour Information</h2>
-            <a>https://www.australia.com/en-us</a> <button>▼</button>
-            <p>Become inspired to travel to Australia. Discover fantastic things to do, places to go and more. Visit the official site of Tourism Australia here.</p>
-        </div>
-
-        <div class="strona">
-            <h2>
-                Coronavirus (COVID-19) - Official Australian Government ...</h2>
-            <a>https://www.australia.gov.au/</a> <button>▼</button>
-            <p>The official Australian Government response website to provide support and updates to Australians on the Coronavirus pandemic.</p>
-        </div>
-
-        <div class="strona">
-            <h2>
-                Australia Post: Personal, Business, Enterprise & Government ...</h2>
-            <a>https://auspost.com.au/</a> <button>▼</button>
-            <p>Australia Post provides reliable and affordable postal, retail, financial and travel services.</p>
-        </div>
-
-        <div class="strona">
-            <h2>
-                Australia - BBC News</h2>
-            <a>https://www.bbc.com/news/world/australia</a> <button>▼</button>
-            <p>Australia rape-accused minister loses top law role. Christian Porter - who denies rape - is no longer attorney general but will remain in the cabinet. 6h6 hours ...</p>
-        </div>
-
-        <div class="strona">
-            <h2>
-                Australian Department of Home Affairs</h2>
-            <a>https://www.homeaffairs.gov.au/</a> <button>▼</button>
-            <p>Home Affairs brings together Australia's federal law enforcement, national and transport security, criminal justice, emergency management, multicultural affairs, ...</p>
-        </div>
-
-        <div class="strona">
-            <h2>
-                Homepage | Australian Government Department of Foreign ...</h2>
-            <a>https://www.dfat.gov.au/</a> <button>▼</button>
-            <p>The department provides foreign, trade and development policy advice to the government. We work with other government agencies to ensure that Australia's ...</p>
-        </div>
-
-        <div class="relatedsearches">
-            <h3>Podobne wyszukiwania</h3>
-            <div class="relatedlists">
-                <ul class="relatedleft">
-                    <li> <b>Nowa Zelandia</b></li>
-                    <li> <b>Sydney</b></li>
-                    <li> <b>Canberra</b></li>
-                    <li> <b>Australia ciekawostki</b></li>
-                </ul>
-                <ul class="relatedright">
-                    <li> <b>Australia kontynent</b></li>
-                    <li> <b>Melbourne</b></li>
-                    <li> <b>Australia'' po angielsku</b></li>
-                    <li> <b>Australia stany</b></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="pagebar">
-            <ul class="pagelist">
-                
-       <table>
-            <tr>
-              <td><span class="blue">G</span></td>
-              <td><span class="red">o</span></td>
-              <td><span class="yellow">o</span></td>
-              <td><span class="yellow">o</span></td>
-              <td><span class="yellow">o</span></td>
-              <td><span class="yellow">o</span></td>
-              <td><span class="yellow">o</span></td>
-              <td><span class="yellow">o</span></td>
-              <td><span class="yellow">o</span></td>
-              <td><span class="yellow">o</span></td>
-              <td><span class="yellow">o</span></td>
-              <td><span class="blue">g</span></td>
-              <td><span class="green">l</span></td>
-              <td><span class="red">e</span></td>
-              <td rowspan="2" style="width: 10px;"></td>
-              <td><span class="blue"><i class="fas fa-angle-right"></i></span></td>
-            </tr>
-            <tr>
-              <td class="pageNumber"></td>
-              <td class="pageNumber"></td>
-              <td class="pageNumber">1</td>
-              <td class="pageNumber">2</td>
-              <td class="pageNumber">3</td>
-              <td class="pageNumber">4</td>
-              <td class="pageNumber">5</td>
-              <td class="pageNumber">6</td>
-              <td class="pageNumber">7</td>
-              <td class="pageNumber">8</td>
-              <td class="pageNumber">9</td>
-              <td colspan="3"></td>
-              <td class="pageNumber">Następna</td>
-            </tr>
-          </table>
-            </ul>
+                    </svg></a>
+<div class="zal">
+                <a class="zaloguj"
+                    href="https://accounts.google.com/ServiceLogin?hl=pl&amp;passive=true&amp;continue=https://www.google.com/%3Fgws_rd%3Dssl&amp;ec=GAZAmgQ"
+                    target="_top">Zaloguj się</a>
+                    </div>
         </div>
     </div>
 
-    <div id="dolnypasek">
-        <div id="flokalizacja">
-   
-    <p> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAADICAMAAAA9W+hXAAAAA1BMVEVwdXoRE0AbAAAANElEQVR4nO3BMQEAAADCoPVP7WsIoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeAN1+AABVhDU2QAAAABJRU5ErkJggg==" width=10px height=10px style="border-radius: 100%" > Jeleśnia </p>
-          <p> - Z Twojego adresu internetowego - Użyj dokładnej lokalizacji - Dowiedz się więcej</p>
-        </div>
+<div class="gog">
+<div class="gogin">
+    <img class="logo" alt="Google" height="92" src="logo.png">
+</div>
 
-        <ul id="dolnaczesc">
-            <li>Pomoc</li>
-            <li>Prześlij opinię</li>
-            <li>Prywatność</li>
-            <li>Warunki</li>
-        </ul>
+</div>
+
+
+<form>
+    <div class="wyszukaj">
+        
+        <input v-model="googleSearch" type="text" class="wpisz"/>
+        <input type="submit" class="przycisk" value="Szukaj w Google"/>
+        <input type="submit" class="przycisk" value="Szczęśliwy traf"/>
     </div>
-  </body>
+</form>
+
+<div class="puste">
+</div>
+
+
+<div class="stopka">
+<div class="pol">Polska</div>
+<div jscontroller="BLvsRb" class="KxwPGc SSwjIe" data-sfe="true" data-sfsw="1200" jsaction="rcuQ6b:npT2md">
+    <div class="KxwPGc AghGtd"><a class="sbutt"
+            href="https://about.google/?utm_source=google-PL&amp;utm_medium=referral&amp;utm_campaign=hp-footer&amp;fg=1"
+            ping="/url?sa=t&amp;rct=j&amp;source=webhp&amp;url=https://about.google/%3Futm_source%3Dgoogle-PL%26utm_medium%3Dreferral%26utm_campaign%3Dhp-footer%26fg%3D1&amp;ved=0ahUKEwitga-CtMPvAhWGxIUKHfnKC0UQkNQCCA0">O
+            nas</a><a class="sbutt"
+            href="https://www.google.com/intl/pl_pl/ads/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&amp;utm_source=google.com&amp;utm_medium=referral&amp;utm_campaign=google_hpafooter&amp;fg=1"
+            ping="/url?sa=t&amp;rct=j&amp;source=webhp&amp;url=https://www.google.com/intl/pl_pl/ads/%3Fsubid%3Dww-ww-et-g-awa-a-g_hpafoot1_1!o2%26utm_source%3Dgoogle.com%26utm_medium%3Dreferral%26utm_campaign%3Dgoogle_hpafooter%26fg%3D1&amp;ved=0ahUKEwitga-CtMPvAhWGxIUKHfnKC0UQkdQCCA4">Reklamuj
+            się</a><a class="sbutt"
+            href="https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&amp;utm_source=google.com&amp;utm_medium=referral&amp;utm_campaign=google_hpbfooter&amp;fg=1"
+            ping="/url?sa=t&amp;rct=j&amp;source=webhp&amp;url=https://www.google.com/services/%3Fsubid%3Dww-ww-et-g-awa-a-g_hpbfoot1_1!o2%26utm_source%3Dgoogle.com%26utm_medium%3Dreferral%26utm_campaign%3Dgoogle_hpbfooter%26fg%3D1&amp;ved=0ahUKEwitga-CtMPvAhWGxIUKHfnKC0UQktQCCA8">Dla
+            firm</a><a class="sbutt" href="https://google.com/search/howsearchworks/?fg=1"> Jak działa wyszukiwarka </a>
+    </div>
+    <div class="KxwPGc ssOUyb"><a class="sbutt"
+            href="https://sustainability.google/intl/pl/commitments-europe/?utm_source=googlehpfooter&amp;utm_medium=housepromos&amp;utm_campaign=bottom-footer&amp;utm_content="><img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAYCAMAAAAiV0Z6AAAAPFBMVEVLoEN0wU6CzFKCzFKCzFKCzFKCzFJSo0MSczNDmkCCzFJPoUMTczNdr0gmgziCzFITczMTczMTczMTczPh00jOAAAAFHRSTlPF/+bIsms8Ad///hX+//5/tXw7aMEAx10AAACaSURBVHgBbc4HDoRQCATQ33tbvf9dF9QxaCT9UQaltLHOh/golXKhMs5Xqa0xU1lyoa2fXFyQOsDG38qsLy4TaV+sFislovyhPzLJJrBu6eQOtpW0LjbJkzTuTDLRVNKa3uxJI+VdiRqXSeu6GW+Qxi29eLIi8H7EsYrT42BD+mQtNO5JMjRuC4lSY8V4hsLX0egGijvUSEP9AbylEsOkeCgWAAAAAElFTkSuQmCC"
+                class="Pb9hCb" alt="" data-iml="1616399136589" data-atf="1"><span class="ktLKi">Neutralność węglowa od
+                2007 roku</span></a></div>
+    <div class="KxwPGc iTjxkf"><a class="sbutt" href="https://policies.google.com/privacy?hl=pl&amp;fg=1"
+            ping="/url?sa=t&amp;rct=j&amp;source=webhp&amp;url=https://policies.google.com/privacy%3Fhl%3Dpl%26fg%3D1&amp;ved=0ahUKEwitga-CtMPvAhWGxIUKHfnKC0UQ8awCCBA">Prywatność</a><a
+            class="sbutt" href="https://policies.google.com/terms?hl=pl&amp;fg=1"
+            ping="/url?sa=t&amp;rct=j&amp;source=webhp&amp;url=https://policies.google.com/terms%3Fhl%3Dpl%26fg%3D1&amp;ved=0ahUKEwitga-CtMPvAhWGxIUKHfnKC0UQ8qwCCBE">Warunki</a>
+           <a class="sbutt" ping="/url?sa=t&amp;rct=j&amp;source=webhp&amp;url=https://policies.google.com/terms%3Fhl%3Dpl%26fg%3D1&amp;ved=0ahUKEwitga-CtMPvAhWGxIUKHfnKC0UQ8qwCCBE">Ustawienia</a>
+        
+      
+    </div>
+</div>
+</div>
+<div class="ukryj">
+<div class="pasek">
+    <div class="but">Wszystko</div>
+    <div class="but">Wiadomości</div>
+    <div class="but">Grafika</div>
+    <div class="but">Wideo</div>
+    <div class="but">Mapy</div>
+    <div class="but">Więcej</div>
+    <div class="but">Ustawienia</div>
+    <div class="but">Narzędzia</div>
+
+</div>
+
+<div class="wyniki">
+
+    <p class="results_number">Około 3 520 000 000 wyników (0,87 s) </p>
+
+    <div class="result">
+        <a class="link" href="#">https://pl.wikipedia.org › wiki › Australia
+            </a>
+        <h2><a href="#">Australia – Wikipedia, wolna encyklopedia</a></h2>
+        <p>Jest zamieszkiwane przez 25 mln osób, z czego 2/3 populacji mieszka w pięciu największych australijskich metropoliach. Australia jest krajem wysoko ...</p>
+    </div>
+
+    <div class="result">
+        <a class="link" href="#">https://en.wikipedia.org › wiki › Au...
+            </a>
+        <h2><a href="#">Australia - Wikipedia</a></h2>
+        <p>Australia, officially the Commonwealth of Australia, is a sovereign country comprising the mainland of the Australian continent, the island of Tasmania, and ...</p>
+    </div>
+
+    <div class="result">
+        <a class="link" href="#">https://www.australia.com › en-us
+            Tłumaczenie strony</a>
+        <h2><a href="#">Tourism Australia: Visit Australia - Travel & Tour Information</a></h2>
+        <p>Become inspired to travel to Australia. Discover fantastic things to do, places to go and more. Visit the official site of Tourism Australia here.</p>
+    </div>
+
+    <div class="result">
+        <a class="link" href="#">https://www.gov.pl › web › dyplomacja › australia
+            </a>
+        <h2><a href="#">Australia - Ministerstwo Spraw Zagranicznych - Portal Gov.pl</a></h2>
+        <p>Australia. Bezpieczeństwo. Światowa Organizacja Zdrowia uznała epidemię wywołaną wirusem SARS-CoV-2 za pandemię. W związku z pogarszającą się ...</p>
+    </div>
+
+    <div class="result">
+        <a class="link" href="#">https://www.australia.gov.au
+            Tłumaczenie strony</a>
+        <h2><a href="#">Coronavirus (COVID-19) - Official Australian Government ...</a></h2>
+        <p>The official Australian Government response website to provide support and updates to Australians on the Coronavirus pandemic.</p>
+    </div>
+
+
+
+    <div class="result">
+        <a class="link" href="#">https://www.bbc.com › news › world › australia</a>
+        <h2><a href="#">Australia - BBC News</a></h2>
+        <p>Get the latest BBC World News: international news, features and analysis from Africa, the Asia-Pacific, Europe, Latin America, the Middle East, South Asia, and ...</p>
+    </div>
+
+    <div class="result">
+        <a class="link" href="#">https://www.dfat.gov.au Tłumaczenie strony </a>
+        <h2><a href="#">Homepage | Australian Government Department of Foreign ...</a></h2>
+        <p>The department provides foreign, trade and development policy advice to the government. We work with other government agencies to ensure that Australia's ...</p>
+    </div>
+
+    <div class="result">
+        <a class="link" href="#">https://www.homeaffairs.gov.au  Tłumaczenie strony</a>
+        <h2><a href="#">Australian Department of Home Affairs</a></h2>
+        <p>Home Affairs brings together Australia's federal law enforcement, national and transport security, criminal justice, emergency management, multicultural affairs, ...</title></p>
+    </div>
+
+</div>
+
+<h3>Podobne wyszukiwania</h3>
+<div class="podobne">
+    
+    <div class="boxpod1">
+    <div class="pod">Australia ciekawostki</div>
+    <div class="pod">Australia kontynent</div>
+    <div class="pod">Sydney</div>
+    <div class="pod">Historia Australii</div>
+    </div>
+    <div class="boxpod1">
+    <div class="pod">Canberra</div>
+    <div class="pod">Nowa Zelandia</div>
+    <div class="pod">Australia po angielsku</div>
+    <div class="pod">Australia stany</div>
+    </div>
+</div>
+
+
+<table class="strony">
+    <tbody>
+        <tr>
+            <td><span class="blue">G</span></td>
+            <td><span class="red">o</span></td>
+            <td><span class="yellow">o</span></td>
+            <td><span class="yellow">o</span></td>
+            <td><span class="yellow">o</span></td>
+            <td><span class="yellow">o</span></td>
+            <td><span class="yellow">o</span></td>
+            <td><span class="yellow">o</span></td>
+            <td><span class="yellow">o</span></td>
+            <td><span class="yellow">o</span></td>
+            <td><span class="yellow">o</span></td>
+            <td><span class="blue">g</span></td>
+            <td><span class="green">l</span></td>
+            <td><span class="red">e</span></td>
+            <td rowspan="2" style="width: 10px;"></td>
+        </tr>
+
+        <tr>
+            <td class="page"></td>
+            <td class="page" style="color: black; cursor: text;">1</td>
+            <td class="page">2</td>
+            <td class="page">3</td>
+            <td class="page">4</td>
+            <td class="page">5</td>
+            <td class="page">6</td>
+            <td class="page">7</td>
+            <td class="page">8</td>
+            <td class="page">9</td>
+            <td class="page">10</td>
+            <td colspan="3"></td>
+            <td class="page">Następna</td>
+        </tr>
+
+    </tbody>
+</table>
+
+<div class="stopkwysz">
+    <div class="part">
+        <div class="txt">
+            Polska | Jeleśnia - Na podstawie Twojej wcześniejszej aktywności - Użyj dokładnej lokalizacji - Dowiedz się więcej
+        </div>
+    </div>
+    <div class="part">
+                <div class="txt">
+                    <div class="stopkabut">Pomoc</div>
+                    <div class="stopkabut">Prześlij opinię</div>
+                    <div class="stopkabut">Prywatność</div>
+                    <div class="stopkabut">Warunki</div>
+                </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            googleSearch: '',
+        }
+    });
+</script>
 </html>
