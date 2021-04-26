@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<div id="app" :class="[googleSearch.length > 0 ? 'results' : 'home']">
+    <div id="app" :class="[wyszukaj.length > 0 ? 'results' : 'home']">
 <div class="container">
     <div class="menu">
         <div class="button">
@@ -47,11 +47,17 @@
 
 <form>
     <div class="wyszukaj">
-        
-        <input v-model="googleSearch" type="text" class="wpisz"/>
-        <input type="submit" class="przycisk" value="Szukaj w Google"/>
-        <input type="submit" class="przycisk" value="Szczęśliwy traf"/>
-    </div>
+        <div class="wpisz">
+            <input v-model="googleSearch" @keyup.enter="akceptuj" type="search"/>
+            <div class="lista">
+                <ul v-for="city in filtredCities" @click="wybierz(city)">
+                    {{googleSearch}}<b>{{ city.name.substring(googleSearch.length) }}</b>
+                </ul>
+            </div>
+        </div>
+            <input type="submit" class="przycisk"  value="Szukaj w Google" />
+            <input type="submit" class="przycisk" value="Szczęśliwy traf" />
+        </div>
 </form>
 
 <div class="puste">
@@ -103,14 +109,6 @@
 <div class="wyniki">
 
     <p class="results_number">Około 3 520 000 000 wyników (0,87 s) </p>
-    <div class="cities">
-        <a class="link">Miasta zawierające "{{googleSearch}}":</a>
-        <ul>
-            <li v-for="city in filteredCities">
-                {{ city.name }}
-            </li>
-        </ul>
-    </div>
     <div class="result">
         <a class="link" href="#">https://pl.wikipedia.org › wiki › Australia
             </a>
@@ -247,36 +245,31 @@
 <script>
   
     var app = new Vue({
-        el: '#app',
+        el: "#app",
         data: {
-            googleSearch: '',
+            googleSearch: "",
+            wyszukaj: "",
             cities: window.cities,
         },
 
         computed: {
-            filteredCities: function () {
-                let result = this.cities.filter(city => city.name.includes(this.googleSearch));
-                if (result.length > 10) {
-                    return result.slice(1, 11);
+            filtredCities() {
+                let result = this.cities.filter(city => city.name.startsWith(this.googleSearch) || city.name.toLowerCase().startsWith(this.googleSearch));
+                if (this.googleSearch.length > 0) {
+                    return result.slice(0, 10);
                 }
-                return result;
+              
             }
         },
-
-        updated() {
-            this.$nextTick(() => {
-
-                if (this.googleSearch.length > 0) {
-
-                    this.$refs.second.focus();
-
-                } else {
-
-                    this.$refs.first.focus();
-
-                }
-            })
+        methods: {
+            akceptuj() {
+                this.wyszukaj = this.googleSearch
+            },
+            wybierz(city) {
+                this.googleSearch = city.name;
+                this.wyszukaj = this.googleSearch;
+            },
         }
-    });
+    })
 </script>
 </html>

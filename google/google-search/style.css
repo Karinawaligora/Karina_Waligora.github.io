@@ -201,15 +201,25 @@ body.home{
     outline: none;
 }
 
-
-.home .wyszukaj .przycisk {
+.home .wpisz input 
+{
+    display: block;
+    border: none;
+    color: rgba(0,0,0, 0.87);
+    font-size: 16px;
+    border-radius: 25px;
+    width: 100%;
+    transition: box-shadow 100ms;
+    outline: none;
+}
+.home .przycisk {
     background-color: #f8f9fa;
     border: 1px solid #f8f9fa;
     border-radius: 4px;
     color: #3c4043;
     font-family: arial,sans-serif;
     font-size: 14px;
-    margin: 11px 4px;
+    margin: 50px 4px;
     padding: 0 16px;
     line-height: 27px;
     height: 36px;
@@ -335,4 +345,22 @@ body.home{
  .home .ktLKi {
     white-space: nowrap;
     vertical-align: top;
+}
+
+.home ul
+{
+    display: block;
+    padding-top: 8px;
+     padding-bottom: 8px;
+     margin: 0;
+     text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+     font-family: arial,sans-serif;
+}
+
+.home ul:hover,
+.home ul:focus 
+{
+    box-shadow: 0 0 0.3em 0.1em #d9d9d9;
 }
