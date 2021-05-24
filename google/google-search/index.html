@@ -1,275 +1,307 @@
 <!DOCTYPE HTML>
 <html lang="pl">
 
-<head>
-    <meta charset="utf-8" />
-    <meta content="origin" name="referrer">
-    <meta content="/images/branding/googleg/1x/googleg_standard_color_128dp.png" itemprop="image">
-    <link href="/manifest?pwa=webhp" crossorigin="use-credentials" rel="manifest">
-    <title>Google</title> 
-    <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1" />
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <link href="result_style.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-    <script src="cities.js"></script>
-</head>
+    <head>
+        <meta charset="utf-8">
+        <title>Szukaj w Google</title>
+        <link rel="icon"  href="icon.png">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style_results.css">
+        <link rel="stylesheet" type="text/css" href="v-autocompleter.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="./cities.js"></script>
+        <script src="./v-autocompleter.js"></script>
+      </head>
 
-<body>
-    <div id="app" :class="[wyszukaj.length > 0 ? 'results' : 'home']">
-<div class="container">
-    <div class="menu">
-        <div class="button">
-            <div class="nav">
-            <a class="gb_g" data-pid="23" href="https://mail.google.com/mail/&amp;ogbl" target="_top">Gmail</a>
-            <a class="gb_g" data-pid="2" href="https://www.google.pl/imghp?hl=pl&amp;ogbl" target="_top">Grafika</a>
+      <body> 
+
+        <div id="app" :class="[change_class == 1 ? 'results' : 'home']"> 
+          
+        <nav class="nav_tools">
+            <a href ="#">Gmail</a>
+            <a href ="#">Grafika</a>
+            <img src="bars.png" class="google_apps" role="button"></img>
+            <button>Zaloguj się</button>
+        </nav>
+    
+        <section class="search">
+            <img src="google.png" class="logo">
+            <form><br><br>
+                <div class="search_elements">
+                  <v-autocompleter v-model="googleSearch" :options="cities" @enter="showResults"></v-autocompleter>
+                    <img src="search_icon.png" class="search_icon"/>
+                    <img src="mic.png" class="search_voice"/>
+                    <input  type="button" class="search_button" value="Sukaj w google"/>
+                    <input  type="button" class="search_button" value="Szczęśliwy traf"/>
                 </div>
-                <a class="gb_D" aria-label="Aplikacje Google" href="https://www.google.pl/intl/pl/about/products" aria-expanded="false"
-                    role="button" tabindex="0"><svg class="gb_Xe" focusable="false" viewBox="0 0 24 24">
-                        <path
-                            d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z">
-                        </path>
-                    </svg></a>
-<div class="zal">
-                <a class="zaloguj"
-                    href="https://accounts.google.com/ServiceLogin?hl=pl&amp;passive=true&amp;continue=https://www.google.com/%3Fgws_rd%3Dssl&amp;ec=GAZAmgQ"
-                    target="_top">Zaloguj się</a>
-                    </div>
-        </div>
-    </div>
-
-<div class="gog">
-<div class="gogin">
-    <img class="logo" alt="Google" height="92" src="logo.png">
-</div>
-
-</div>
-
-
-<form>
-    <div class="wyszukaj">
-        <div class="wpisz">
-            <input v-model="googleSearch" @keyup.enter="akceptuj" type="search"/>
-            <div class="lista">
-                <ul v-for="city in filtredCities" @click="wybierz(city)">
-                    {{googleSearch}}<b>{{ city.name.substring(googleSearch.length) }}</b>
-                </ul>
+            </form>
+        </section>
+    
+        <footer class="home_futter">
+            <h4>Polska</h4>
+            <div class="links">
+                <div class="link_1">
+                    <a href="#">O nas</a>
+                    <a href="#">Reklamuj się</a>
+                    <a href="#">Dla firm</a>
+                    <a href="#">Jak działa wyszukiwarka</a>
+                </div>
+                <div class="link_2">
+                    <a href="#"><img src="leaf.png" class="leaf">Nautralność węglowa od 2007 roku</a>
+                </div>
+                <div class="link_3">
+                    <a href="#">Prywatność</a>
+                    <a href="#">Warunki</a>
+                    <a href="#">Ustawienia</a>
+                </div>
             </div>
-        </div>
-            <input type="submit" class="przycisk"  value="Szukaj w Google" />
-            <input type="submit" class="przycisk" value="Szczęśliwy traf" />
-        </div>
-</form>
+        </footer>
+    
+        <div class="top_nav">
+    
+            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"  alt="">
+    
+            <ul class="accountOptions">
+              <li><a href="#"><img src="bars.png" class="google_apps" role="button"></a></li>
+              <li><button class="signIn" type="button" name="button">Zaloguj się</button></li>
+            </ul>
+    
+            <div class="search_tools">
+    
+              <div class="search_elem">
+                <input ref="second" type="text" v-model="googleSearch"/>
+                <img src="loupe_icon.png" class="search_icon">
+                <img src="mic.png" class="search_voice">
+                <img src="keyboard.png" class="search_keyboard">
+                <div class="line"></div>
+                <img src="x.png" class="search_x">
+              </div>
+    
+              <ul class="search_options">
+                <li class="left active"><a href="#">Wszystko</a></li>
+                <li class="left"><a href="#">Wiadomości</a></li>
+                <li class="left"><a href="#">Grafika</a></li>
+                <li class="left"><a href="#">Wideo</a></li>
+                <li class="left"><a href="#">Mapy</a></li>
+                <li class="left"><a href="#">Więcej</a></li>
+                <li class="right"><a class="tools" href="#">Narzędzia</a></li>
+                <li class="right"><a href="#">Ustawienia</a></li>
+              </ul>
+              
+            </div>
+    
+        </div> 
+    
+        <div class="searchResults">
 
-<div class="puste">
-</div>
+    <p class="results_number">Około 3 520 000 000 wyników (0,87 s)</p>
 
-
-<div class="stopka">
-<div class="pol">Polska</div>
-<div jscontroller="BLvsRb" class="KxwPGc SSwjIe" data-sfe="true" data-sfsw="1200" jsaction="rcuQ6b:npT2md">
-    <div class="KxwPGc AghGtd"><a class="sbutt"
-            href="https://about.google/?utm_source=google-PL&amp;utm_medium=referral&amp;utm_campaign=hp-footer&amp;fg=1"
-            ping="/url?sa=t&amp;rct=j&amp;source=webhp&amp;url=https://about.google/%3Futm_source%3Dgoogle-PL%26utm_medium%3Dreferral%26utm_campaign%3Dhp-footer%26fg%3D1&amp;ved=0ahUKEwitga-CtMPvAhWGxIUKHfnKC0UQkNQCCA0">O
-            nas</a><a class="sbutt"
-            href="https://www.google.com/intl/pl_pl/ads/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&amp;utm_source=google.com&amp;utm_medium=referral&amp;utm_campaign=google_hpafooter&amp;fg=1"
-            ping="/url?sa=t&amp;rct=j&amp;source=webhp&amp;url=https://www.google.com/intl/pl_pl/ads/%3Fsubid%3Dww-ww-et-g-awa-a-g_hpafoot1_1!o2%26utm_source%3Dgoogle.com%26utm_medium%3Dreferral%26utm_campaign%3Dgoogle_hpafooter%26fg%3D1&amp;ved=0ahUKEwitga-CtMPvAhWGxIUKHfnKC0UQkdQCCA4">Reklamuj
-            się</a><a class="sbutt"
-            href="https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&amp;utm_source=google.com&amp;utm_medium=referral&amp;utm_campaign=google_hpbfooter&amp;fg=1"
-            ping="/url?sa=t&amp;rct=j&amp;source=webhp&amp;url=https://www.google.com/services/%3Fsubid%3Dww-ww-et-g-awa-a-g_hpbfoot1_1!o2%26utm_source%3Dgoogle.com%26utm_medium%3Dreferral%26utm_campaign%3Dgoogle_hpbfooter%26fg%3D1&amp;ved=0ahUKEwitga-CtMPvAhWGxIUKHfnKC0UQktQCCA8">Dla
-            firm</a><a class="sbutt" href="https://google.com/search/howsearchworks/?fg=1"> Jak działa wyszukiwarka </a>
-    </div>
-    <div class="KxwPGc ssOUyb"><a class="sbutt"
-            href="https://sustainability.google/intl/pl/commitments-europe/?utm_source=googlehpfooter&amp;utm_medium=housepromos&amp;utm_campaign=bottom-footer&amp;utm_content="><img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAYCAMAAAAiV0Z6AAAAPFBMVEVLoEN0wU6CzFKCzFKCzFKCzFKCzFJSo0MSczNDmkCCzFJPoUMTczNdr0gmgziCzFITczMTczMTczMTczPh00jOAAAAFHRSTlPF/+bIsms8Ad///hX+//5/tXw7aMEAx10AAACaSURBVHgBbc4HDoRQCATQ33tbvf9dF9QxaCT9UQaltLHOh/golXKhMs5Xqa0xU1lyoa2fXFyQOsDG38qsLy4TaV+sFislovyhPzLJJrBu6eQOtpW0LjbJkzTuTDLRVNKa3uxJI+VdiRqXSeu6GW+Qxi29eLIi8H7EsYrT42BD+mQtNO5JMjRuC4lSY8V4hsLX0egGijvUSEP9AbylEsOkeCgWAAAAAElFTkSuQmCC"
-                class="Pb9hCb" alt="" data-iml="1616399136589" data-atf="1"><span class="ktLKi">Neutralność węglowa od
-                2007 roku</span></a></div>
-    <div class="KxwPGc iTjxkf"><a class="sbutt" href="https://policies.google.com/privacy?hl=pl&amp;fg=1"
-            ping="/url?sa=t&amp;rct=j&amp;source=webhp&amp;url=https://policies.google.com/privacy%3Fhl%3Dpl%26fg%3D1&amp;ved=0ahUKEwitga-CtMPvAhWGxIUKHfnKC0UQ8awCCBA">Prywatność</a><a
-            class="sbutt" href="https://policies.google.com/terms?hl=pl&amp;fg=1"
-            ping="/url?sa=t&amp;rct=j&amp;source=webhp&amp;url=https://policies.google.com/terms%3Fhl%3Dpl%26fg%3D1&amp;ved=0ahUKEwitga-CtMPvAhWGxIUKHfnKC0UQ8qwCCBE">Warunki</a>
-           <a class="sbutt" ping="/url?sa=t&amp;rct=j&amp;source=webhp&amp;url=https://policies.google.com/terms%3Fhl%3Dpl%26fg%3D1&amp;ved=0ahUKEwitga-CtMPvAhWGxIUKHfnKC0UQ8qwCCBE">Ustawienia</a>
-        
-      
-    </div>
-</div>
-</div>
-<div class="ukryj">
-<div class="pasek">
-    <div class="but">Wszystko</div>
-    <div class="but">Wiadomości</div>
-    <div class="but">Grafika</div>
-    <div class="but">Wideo</div>
-    <div class="but">Mapy</div>
-    <div class="but">Więcej</div>
-    <div class="but">Ustawienia</div>
-    <div class="but">Narzędzia</div>
-
-</div>
-
-<div class="wyniki">
-
-    <p class="results_number">Około 3 520 000 000 wyników (0,87 s) </p>
     <div class="result">
-        <a class="link" href="#">https://pl.wikipedia.org › wiki › Australia
-            </a>
+        <a class="link" href="#">https://pl.wikipedia.org</a>
         <h2><a href="#">Australia – Wikipedia, wolna encyklopedia</a></h2>
         <p>Jest zamieszkiwane przez 25 mln osób, z czego 2/3 populacji mieszka w pięciu największych australijskich metropoliach. Australia jest krajem wysoko ...</p>
     </div>
 
+
     <div class="result">
-        <a class="link" href="#">https://en.wikipedia.org › wiki › Au...
-            </a>
-        <h2><a href="#">Australia - Wikipedia</a></h2>
+        <a class="link" href="#">https://en.wikipedia.org</a>
+        <h2><a href="#"> Australia - Wikipedia</a></h2>
         <p>Australia, officially the Commonwealth of Australia, is a sovereign country comprising the mainland of the Australian continent, the island of Tasmania, and ...</p>
     </div>
 
+    
     <div class="result">
-        <a class="link" href="#">https://www.australia.com › en-us
-            Tłumaczenie strony</a>
+        <a class="link" href="#">https://www.australia.com</a>
         <h2><a href="#">Tourism Australia: Visit Australia - Travel & Tour Information</a></h2>
         <p>Become inspired to travel to Australia. Discover fantastic things to do, places to go and more. Visit the official site of Tourism Australia here.</p>
     </div>
 
+
     <div class="result">
-        <a class="link" href="#">https://www.gov.pl › web › dyplomacja › australia
-            </a>
+        <a class="link" href="#">https://www.gov.pl</a>
         <h2><a href="#">Australia - Ministerstwo Spraw Zagranicznych - Portal Gov.pl</a></h2>
         <p>Australia. Bezpieczeństwo. Światowa Organizacja Zdrowia uznała epidemię wywołaną wirusem SARS-CoV-2 za pandemię. W związku z pogarszającą się ...</p>
     </div>
 
+  
     <div class="result">
-        <a class="link" href="#">https://www.australia.gov.au
-            Tłumaczenie strony</a>
+        <a class="link" href="#">https://www.australia.gov.au</a>
         <h2><a href="#">Coronavirus (COVID-19) - Official Australian Government ...</a></h2>
         <p>The official Australian Government response website to provide support and updates to Australians on the Coronavirus pandemic.</p>
     </div>
 
 
 
+
     <div class="result">
-        <a class="link" href="#">https://www.bbc.com › news › world › australia</a>
+        <a class="link" href="#">https://www.bbc.com</a>
         <h2><a href="#">Australia - BBC News</a></h2>
         <p>Get the latest BBC World News: international news, features and analysis from Africa, the Asia-Pacific, Europe, Latin America, the Middle East, South Asia, and ...</p>
     </div>
 
+ 
+
     <div class="result">
-        <a class="link" href="#">https://www.dfat.gov.au Tłumaczenie strony </a>
+        <a class="link" href="#">https://www.dfat.gov.au</a>
         <h2><a href="#">Homepage | Australian Government Department of Foreign ...</a></h2>
         <p>The department provides foreign, trade and development policy advice to the government. We work with other government agencies to ensure that Australia's ...</p>
     </div>
 
+  
+
     <div class="result">
-        <a class="link" href="#">https://www.homeaffairs.gov.au  Tłumaczenie strony</a>
+        <a class="link" href="#">https://www.homeaffairs.gov.au</a>
         <h2><a href="#">Australian Department of Home Affairs</a></h2>
         <p>Home Affairs brings together Australia's federal law enforcement, national and transport security, criminal justice, emergency management, multicultural affairs, ...</title></p>
     </div>
 
+
+<br>
+
+<div class="related_results">
+
+  <h2>Podobne wyszukiwania</h2>
+
+  <table>
+    <tr>
+      <td>Australia ciekawostki</td>
+      <td>Australia kontynent</td>
+    </tr>
+    <tr>
+      <td>Sydney</td>
+      <td>Historia Australii</td>
+    </tr>
+    <tr>
+      <td>Canberra</td>
+      <td>Nowa Zelandia</td>
+    </tr>
+    <tr>
+      <td>Australia po angielsku</td>
+      <td>Australia stany</td>
+    </tr>
+  </table>
+
 </div>
 
-<h3>Podobne wyszukiwania</h3>
-<div class="podobne">
-    
-    <div class="boxpod1">
-    <div class="pod">Australia ciekawostki</div>
-    <div class="pod">Australia kontynent</div>
-    <div class="pod">Sydney</div>
-    <div class="pod">Historia Australii</div>
-    </div>
-    <div class="boxpod1">
-    <div class="pod">Canberra</div>
-    <div class="pod">Nowa Zelandia</div>
-    <div class="pod">Australia po angielsku</div>
-    <div class="pod">Australia stany</div>
-    </div>
+<br><br>
+
+<table class="pages">
+    <tr>
+      <td><span class="blue">G</span></td>
+      <td><span class="red">o</span></td>
+      <td><span class="yellow">o</span></td>
+      <td><span class="yellow">o</span></td>
+      <td><span class="yellow">o</span></td>
+      <td><span class="yellow">o</span></td>
+      <td><span class="yellow">o</span></td>
+      <td><span class="yellow">o</span></td>
+      <td><span class="yellow">o</span></td>
+      <td><span class="yellow">o</span></td>
+      <td><span class="yellow">o</span></td>
+      <td><span class="blue">g</span></td>
+      <td><span class="green">l</span></td>
+      <td><span class="red">e</span></td>
+      <td rowspan="2" style="width: 10px;"></td>
+      <td><span class="blue arrow">></span></td>
+    </tr>
+
+    <tr>
+      <td class="page_nr"></td>
+      <td class="page_nr" style="color: black; cursor: text;">1</td>
+      <td class="page_nr">2</td>
+      <td class="page_nr">3</td>
+      <td class="page_nr">4</td>
+      <td class="page_nr">5</td>
+      <td class="page_nr">6</td>
+      <td class="page_nr">7</td>
+      <td class="page_nr">8</td>
+      <td class="page_nr">9</td>
+      <td class="page_nr">10</td>
+      <td colspan="3"></td>
+      <td class="page_nr">Następna</td>
+    </tr>
+
+  </table>
 </div>
 
+<div class="footer">
 
-<table class="strony">
-    <tbody>
-        <tr>
-            <td><span class="blue">G</span></td>
-            <td><span class="red">o</span></td>
-            <td><span class="yellow">o</span></td>
-            <td><span class="yellow">o</span></td>
-            <td><span class="yellow">o</span></td>
-            <td><span class="yellow">o</span></td>
-            <td><span class="yellow">o</span></td>
-            <td><span class="yellow">o</span></td>
-            <td><span class="yellow">o</span></td>
-            <td><span class="yellow">o</span></td>
-            <td><span class="yellow">o</span></td>
-            <td><span class="blue">g</span></td>
-            <td><span class="green">l</span></td>
-            <td><span class="red">e</span></td>
-            <td rowspan="2" style="width: 10px;"></td>
-        </tr>
-
-        <tr>
-            <td class="page"></td>
-            <td class="page" style="color: black; cursor: text;">1</td>
-            <td class="page">2</td>
-            <td class="page">3</td>
-            <td class="page">4</td>
-            <td class="page">5</td>
-            <td class="page">6</td>
-            <td class="page">7</td>
-            <td class="page">8</td>
-            <td class="page">9</td>
-            <td class="page">10</td>
-            <td colspan="3"></td>
-            <td class="page">Następna</td>
-        </tr>
-
-    </tbody>
-</table>
-
-<div class="stopkwysz">
-    <div class="part">
-        <div class="txt">
-            Polska | Jeleśnia - Na podstawie Twojej wcześniejszej aktywności - Użyj dokładnej lokalizacji - Dowiedz się więcej
-        </div>
-    </div>
-    <div class="part">
-                <div class="txt">
-                    <div class="stopkabut">Pomoc</div>
-                    <div class="stopkabut">Prześlij opinię</div>
-                    <div class="stopkabut">Prywatność</div>
-                    <div class="stopkabut">Warunki</div>
-                </div>
-    </div>
+  <div class="localization">
+  <p>
+    <a class="country">Polska</a>
+    <a class="loc"><strong>Jelesnia</strong> - Z Twojego adresu internetowego </a>
+    <a class ="loc_more">- Użyj dokładnej lokalizacji</a><a class ="loc_more"> - Dowiedz się więcej</a>
+  </p>
 </div>
-</div>
+
+  <ul>
+      <li><a href="#">Pomoc</a></li>
+      <li><a href="#">Prześlij opinię</a></li>
+      <li><a href="#">Prywatność</a></li>
+      <li><a href="#">Warunki</a></li>
+  </ul>
+  
 </div>
 </div>
 </body>
-<script>
-  
-    var app = new Vue({
-        el: "#app",
-        data: {
-            googleSearch: "",
-            wyszukaj: "",
-            cities: window.cities,
-        },
 
-        computed: {
-            filtredCities() {
-                let result = this.cities.filter(city => city.name.startsWith(this.googleSearch) || city.name.toLowerCase().startsWith(this.googleSearch));
-                if (this.googleSearch.length > 0) {
-                    return result.slice(0, 10);
-                }
-              
-            }
-        },
-        methods: {
-            akceptuj() {
-                this.wyszukaj = this.googleSearch
-            },
-            wybierz(city) {
-                this.googleSearch = city.name;
-                this.wyszukaj = this.googleSearch;
-            },
+<script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        enterValues: [],
+        cities: window.cities,
+        change_class: 0,
+        googleSearch: '',
+      },
+      methods: {
+        showResults(newValue) {
+          this.enterValues.push(newValue);
+  
+          if (this.change_class == 0){
+            this.change_class = 1;
+          }
+          else{
+            this.$emit('input', '');
+            this.change_class = 0;
+          }
         }
-    })
-</script>
-</html>
+      }
+  });
+  </script>
+  </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
