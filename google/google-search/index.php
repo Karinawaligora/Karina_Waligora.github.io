@@ -9,7 +9,70 @@
         <link rel="stylesheet" type="text/css" href="style_results.css">
         <link rel="stylesheet" type="text/css" href="v-autocompleter.css">
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-        <script src="./cities.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js" integrity="sha512-JZSo0h5TONFYmyLMqp8k4oPhuo6yNk9mHM+FY50aBjpypfofqtEWsAgRDQm94ImLCzSaHeqNvYuD9382CEn2zw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="./v-autocompleter.js"></script>
+      </head>
+@@ -28,7 +28,13 @@
+            <img src="google.png" class="logo">
+            <form><br><br>
+                <div class="search_elements">
+                <div id="app">
+                    {{ googleSearch }}
+                    <input type="text" v-model="googleSearch" @input="findResultsDebounced" />
+                    <div v-for="city in results" :key="city.name">
+                    <span class="name">{{ city.name }}</span>
+                    </div>
+                  </div>
+                  <div id="app">
+                    {{ googleSearch }}
+                    <input type="text" v-model="googleSearch" @input="findResultsDebounced" />
+                    <div v-for="city in results" :key="city.name">
+                    <span class="name">{{ city.name }}</span>
+                    </div>
+                  </div>
+                    <img src="search_icon.png" class="search_icon"/>
+                    <img src="mic.png" class="search_voice"/>
+                    <input  type="button" class="search_button" value="Sukaj w google"/>
+@@ -238,27 +244,24 @@ <h2>Podobne wyszukiwania</h2>
+</body>
+<script>
+    var app = new Vue({
+  var app = new Vue({
+      el: '#app',
+      data: {
+        googleSearch: '',
+          results: []
+         
+      },
+      methods: {
+        showResults(newValue) {
+          this.enterValues.push(newValue);
+
+          if (this.change_class == 0){
+            this.change_class = 1;
+          }
+          else{
+            this.$emit('input', '');
+            this.change_class = 0;
+          }
+        }
+      methods : {
+          findResultsDebounced : Cowboy.debounce(100, function findResultsDebounced() {
+              console.log('Fetch: ', this.googleSearch)
+              console.log(`http://localhost:8080/search?name=${this.googleSearch}`);
+              fetch(`http://localhost:8080/search?name=${this.googleSearch}`)
+                  .then(response => response.json())
+                  .then(data => {
+                      console.log('Data: ', data);
+                      this.results = data;
+                  });
+          })
+      }
+  });
+  })
+  </script>
+  </html> 
+
         <script src="./v-autocompleter.js"></script>
       </head>
 
@@ -254,18 +317,17 @@
         change_class: 0,
         googleSearch: '',
       },
-      methods: {
-        showResults(newValue) {
-          this.enterValues.push(newValue);
-  
-          if (this.change_class == 0){
-            this.change_class = 1;
-          }
-          else{
-            this.$emit('input', '');
-            this.change_class = 0;
-          }
-        }
+      methods : {
+          findResultsDebounced : Cowboy.debounce(100, function findResultsDebounced() {
+              console.log('Fetch: ', this.googleSearch)
+              console.log(`http://localhost:8080/search?name=${this.googleSearch}`);
+              fetch(`http://localhost:8080/search?name=${this.googleSearch}`)
+                  .then(response => response.json())
+                  .then(data => {
+                      console.log('Data: ', data);
+                      this.results = data;
+                  });
+          })
       }
   });
   </script>
